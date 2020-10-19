@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Routing\RoteGroup;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=> 'databuku'], function(){
+    Route::get('index','tokobukuController@index')->name('databuku.index'); 
+    Route::get('create', 'tokobukuController@create')->name('databuku.create');
+    
+});
